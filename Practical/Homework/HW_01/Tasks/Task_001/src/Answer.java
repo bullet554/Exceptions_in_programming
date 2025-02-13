@@ -28,6 +28,18 @@
 
 class Answer {
     public static int convertAndSum(String[] strings) {
-// Введите свое решение ниже
+        int sum = 0;
+        for (String str : strings) {
+            try {
+                int number = Integer.parseInt(str);
+                sum += number;
+            } catch (NumberFormatException exp) {
+                throw new NumberFormatException("Ошибка преобразования строки в число: " + str);
+            }
+        }
+        if (sum > 100) {
+            throw new ArithmeticException("Превышен лимит суммы");
+        }
+        return sum;
     }
 }
